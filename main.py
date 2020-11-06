@@ -21,28 +21,21 @@ def last_pixel(image):
 			if value[x, y] == 0:
 				return y
 
-
-
 if __name__ == '__main__':
 	image = Image.open(input("Picture name: "))
 	name = input("Picture word: ").lower()
 	print("\nUse letters only from picture word!")
 	word = input("Your funny word: ").lower()
 	img_name = {}
-	
 	width, height = image.size
 	crop_from_top = first_pixel(image)
 	crop_from_bottom = last_pixel(image)
 	image = image.crop((0, crop_from_top, width, crop_from_bottom))
-	#cropped = image.crop((0, crop_from_top, width, crop_from_bottom))
-	#cropped.save('cropped_image.png')
-	#image = Image.open('cropped_image.png')
 	width, height = image.size
 	block_height = height // len(name)
 	re_name = re.compile(r'(.)\1{1,}', re.IGNORECASE).sub(r'\1', name)
 	block_first = 0
 	for i in range(0, len(re_name)):
-
 		img_name.update({re_name[i]:[block_first, block_height+block_first]})
 		block_first += block_height
 	#print(img_name)
