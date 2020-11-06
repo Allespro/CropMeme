@@ -7,7 +7,6 @@ def first_pixel(image):
 	width, height = image.size
 	for y in range(0, height):
 		for x in range(0, width):
-			#print(value[x, y], end=', ')
 			if value[x, y] == 0:
 				return y
 
@@ -17,7 +16,6 @@ def last_pixel(image):
 	width, height = image.size
 	for y in range(height-1, 0, -1):
 		for x in range(0, width):
-			#print(value[x, y], end=', ')
 			if value[x, y] == 0:
 				return y
 
@@ -38,7 +36,6 @@ if __name__ == '__main__':
 	for i in range(0, len(re_name)):
 		img_name.update({re_name[i]:[block_first, block_height+block_first]})
 		block_first += block_height
-	#print(img_name)
 	final_image = []
 	for i in word:
 		final_image.append(image.crop((0, img_name[i][0], width, img_name[i][1])))
